@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "./App.css";
 import FormikField from "../FormikField";
-import FormikSelect from "../FormikSelect";
+import FormikSelect, { FormikSelectItem } from "../FormikSelect";
 
 interface FormValues {
   name: string;
@@ -14,6 +14,13 @@ const initialValues: FormValues = {
   name: "",
   position: "",
 };
+
+const position: FormikSelectItem[] = [
+  { label: "Front End", value: "front_end" },
+  { label: "Back End", value: "back_end" },
+  { label: "Dev Ops", value: "dev_ops" },
+  { label: "QA", value: "qa" },
+];
 
 const App: React.FC = () => {
   const handleSubmit = (values: FormValues): void => {
@@ -68,7 +75,7 @@ const App: React.FC = () => {
               </Field>
               <ErrorMessage name='position' />
             </div>
-            <FormikSelect label='Position' name='position' />
+            <FormikSelect label='Position' name='position' items={position} />
             <button disabled={!dirty || !isValid} type='submit'>
               Submit
             </button>

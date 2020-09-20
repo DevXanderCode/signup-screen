@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import {
   InputLabel,
   FormControl,
@@ -8,7 +8,7 @@ import {
 } from "@material-ui/core";
 import "./FormikSelect.css";
 
-interface FormikSelectItems {
+export interface FormikSelectItem {
   label: string;
   value: string;
 }
@@ -16,13 +16,32 @@ interface FormikSelectItems {
 interface FormikSelectProps {
   label: string;
   name: string;
-  options: FormikSelectItems[];
+  items: FormikSelectItem[];
 }
+
+interface MaterialUISelectFieldProps {
+  children: ReactNode;
+  label: string;
+}
+
+const MaterialUISelectField: React.FC<MaterialUISelectFieldProps> = ({
+  label,
+  children,
+  ...props
+}) => {
+  return (
+    <FormControl fullWidth>
+      <InputLabel>{label}</InputLabel>
+      <Select>{children}</Select>
+      <FormHelperText>Required!</FormHelperText>
+    </FormControl>
+  );
+};
 
 const FormikSelect: React.FC<FormikSelectProps> = ({
   label,
   name,
-  options,
+  items,
   ...props
 }) => {
   return (
@@ -30,10 +49,11 @@ const FormikSelect: React.FC<FormikSelectProps> = ({
       <FormControl fullWidth>
         <InputLabel>{label}</InputLabel>
         <Select>
-          <MenuItem>Front End</MenuItem>
-          <MenuItem>Back End</MenuItem>
-          <MenuItem>Dev Ops</MenuItem>
-          <MenuItem>QA</MenuItem>
+          {items.map(({ label, value }, i) => (
+            <MenuItem key={i} value={value}>
+              {label}
+            </MenuItem>
+          ))}
         </Select>
         <FormHelperText>Required!</FormHelperText>
       </FormControl>

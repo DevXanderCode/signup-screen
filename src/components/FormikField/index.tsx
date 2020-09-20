@@ -1,7 +1,16 @@
 import React from "react";
+import { TextField } from "@material-ui/core";
 
-const FormikField = () => {
-  return <div className='formikField'>Formik Field</div>;
+interface FormikFieldProps {
+  label: string;
+}
+
+const FormikField: React.FC<FormikFieldProps> = ({ label }) => {
+  return (
+    <div className='formikField'>
+      <TextField label={label} />
+    </div>
+  );
 };
 
 export default FormikField;

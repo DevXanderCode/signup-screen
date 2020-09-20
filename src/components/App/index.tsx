@@ -3,6 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "./App.css";
 import FormikField from "../FormikField";
+import FormikSelect from "../FormikSelect";
 
 interface FormValues {
   name: string;
@@ -67,6 +68,7 @@ const App: React.FC = () => {
               </Field>
               <ErrorMessage name='position' />
             </div>
+            <FormikSelect />
             <button disabled={!dirty || !isValid} type='submit'>
               Submit
             </button>

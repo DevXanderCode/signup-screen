@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import { Formik, Form, Field } from "formik";
+import * as Yup from "yup";
 
 interface FormValues {
   name: string;
@@ -17,10 +18,19 @@ const App: React.FC = () => {
     alert(JSON.stringify(values));
   };
 
+  const signupSchema = Yup.object().shape({
+    name: Yup.string().required("Required").min(2, "Name is Too Short!"),
+    position: Yup.string().required("Required"),
+  });
+
   return (
     <div className='App'>
       <h1>Sign Up</h1>
-      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validationSchema={signupSchema}
+      >
         {({
           values,
           errors,

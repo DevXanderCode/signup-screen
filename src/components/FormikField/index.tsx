@@ -1,6 +1,7 @@
 import React from "react";
-import { Field } from "formik";
+import { ErrorMessage, Field } from "formik";
 import { TextField } from "@material-ui/core";
+import "./FormikField.css";
 
 interface FormikFieldProps {
   name: string;
@@ -16,6 +17,7 @@ const FormikField: React.FC<FormikFieldProps> = ({ name, label, ...props }) => {
         autoComplete='off'
         label={label}
         fullWidth
+        helperText={<ErrorMessage name={name} />}
       />
       {/* <TextField autoComplete='off' label={label} fullWidth /> */}
     </div>

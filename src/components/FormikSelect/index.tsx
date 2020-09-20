@@ -8,10 +8,15 @@ import {
 } from "@material-ui/core";
 import "./FormikSelect.css";
 
+interface FormikSelectItems {
+  label: string;
+  value: string;
+}
+
 interface FormikSelectProps {
   label: string;
   name: string;
-  options: Array;
+  options: FormikSelectItems[];
 }
 
 const FormikSelect: React.FC<FormikSelectProps> = ({

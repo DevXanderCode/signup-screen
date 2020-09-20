@@ -35,6 +35,8 @@ const App: React.FC = () => {
           values,
           errors,
           touched,
+          isValid,
+          dirty,
           handleChange,
           handleBlur,
           handleSubmit,
@@ -60,7 +62,9 @@ const App: React.FC = () => {
                 <option value='qa'>QA</option>
               </Field>
             </div>
-            <button type='submit'>Submit</button>
+            <button disabled={!dirty || !isValid} type='submit'>
+              Submit
+            </button>
           </Form>
         )}
       </Formik>

@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Formik, Form } from "formik";
+import { Formik, Form, Field } from "formik";
 
 interface FormValues {
   name: string;
@@ -20,7 +20,24 @@ const App: React.FC = () => {
   return (
     <div className='App'>
       <h1>Sign Up</h1>
-      <Formik initialValues={initialValues} onSubmit={handleSubmit}></Formik>
+      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          isSubmitting,
+        }) => (
+          <Form>
+            <div>
+              <label>Name: </label>
+              <Field name={"name"} type='input' />
+            </div>
+          </Form>
+        )}
+      </Formik>
     </div>
   );
 };

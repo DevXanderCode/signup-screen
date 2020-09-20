@@ -8,13 +8,22 @@ import {
 } from "@material-ui/core";
 import "./FormikSelect.css";
 
-interface FormikSelectProps {}
+interface FormikSelectProps {
+  label: string;
+  name: string;
+  options: Array;
+}
 
-const FormikSelect: React.FC<FormikSelectProps> = (props) => {
+const FormikSelect: React.FC<FormikSelectProps> = ({
+  label,
+  name,
+  options,
+  ...props
+}) => {
   return (
     <div className='FormikSelect'>
       <FormControl fullWidth>
-        <InputLabel>Position</InputLabel>
+        <InputLabel>{label}</InputLabel>
         <Select>
           <MenuItem>Front End</MenuItem>
           <MenuItem>Back End</MenuItem>

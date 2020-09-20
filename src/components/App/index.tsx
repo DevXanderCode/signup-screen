@@ -68,7 +68,7 @@ const App: React.FC = () => {
               </Field>
               <ErrorMessage name='position' />
             </div>
-            <FormikSelect />
+            <FormikSelect label='Position' name='position' />
             <button disabled={!dirty || !isValid} type='submit'>
               Submit
             </button>

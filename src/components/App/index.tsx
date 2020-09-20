@@ -49,7 +49,7 @@ const App: React.FC = () => {
               <Field name={"name"} as='input' autoComplete='off' />
               <ErrorMessage name='name' />
             </div>
-            <FormikField />
+            <FormikField name='name' label='Name' />
             <div>
               <label>Position: </label>
               <Field

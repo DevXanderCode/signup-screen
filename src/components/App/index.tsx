@@ -43,12 +43,14 @@ const App: React.FC = () => {
                 autoComplete='off'
                 placeholder='Choose Your Position'
               >
+                <option value=''></option>
                 <option value='front-end'>Front End</option>
                 <option value='back-end'>Back End</option>
                 <option value='dev-ops'>Dev Ops</option>
                 <option value='qa'>QA</option>
               </Field>
             </div>
+            <button type='submit'>Submit</button>
           </Form>
         )}
       </Formik>

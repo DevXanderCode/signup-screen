@@ -6,20 +6,29 @@ import "./FormikField.css";
 interface FormikFieldProps {
   name: string;
   label: string;
+  required?: boolean;
+  type?: string;
 }
 
-const FormikField: React.FC<FormikFieldProps> = ({ name, label, ...props }) => {
+const FormikField: React.FC<FormikFieldProps> = ({
+  name,
+  label,
+  required,
+  type = "text",
+  ...props
+}) => {
   return (
     <div className='formikField'>
       <Field
+        required={required}
         name={name}
         as={TextField}
         autoComplete='off'
         label={label}
+        type={type}
         fullWidth
         helperText={<ErrorMessage name={name} />}
       />
-      {/* <TextField autoComplete='off' label={label} fullWidth /> */}
     </div>
   );
 };

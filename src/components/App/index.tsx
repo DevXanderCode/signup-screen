@@ -44,12 +44,13 @@ const App: React.FC = () => {
           isSubmitting,
         }) => (
           <Form>
-            <div>
-              <label>Name: </label>
-              <Field name={"name"} as='input' autoComplete='off' />
-              <ErrorMessage name='name' />
-            </div>
-            <FormikField name='name' label='Name' />
+            <FormikField name='name' label='Name' required={true} />
+            <FormikField
+              name='password'
+              label='Password'
+              required={true}
+              type='password'
+            />
             <div>
               <label>Position: </label>
               <Field

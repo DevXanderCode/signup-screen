@@ -33,7 +33,21 @@ const App: React.FC = () => {
           <Form>
             <div>
               <label>Name: </label>
-              <Field name={"name"} type='input' />
+              <Field name={"name"} as='input' autoComplete='off' />
+            </div>
+            <div>
+              <label>Position: </label>
+              <Field
+                name='position'
+                as='select'
+                autoComplete='off'
+                placeholder='Choose Your Position'
+              >
+                <option value='front-end'>Front End</option>
+                <option value='back-end'>Back End</option>
+                <option value='dev-ops'>Dev Ops</option>
+                <option value='qa'>QA</option>
+              </Field>
             </div>
           </Form>
         )}

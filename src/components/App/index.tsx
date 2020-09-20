@@ -1,21 +1,24 @@
 import React from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import "./App.css";
 import FormikField from "../FormikField";
 import FormikSelect, { FormikSelectItem } from "../FormikSelect";
+import { Button } from "@material-ui/core";
 
 interface FormValues {
   name: string;
   position: string;
+  password: string;
 }
 
 const initialValues: FormValues = {
   name: "",
+  password: "",
   position: "",
 };
 
-const position: FormikSelectItem[] = [
+const positionItems: FormikSelectItem[] = [
   { label: "Front End", value: "front_end" },
   { label: "Back End", value: "back_end" },
   { label: "Dev Ops", value: "dev_ops" },
@@ -30,6 +33,9 @@ const App: React.FC = () => {
   const signupSchema = Yup.object().shape({
     name: Yup.string().required("Required").min(2, "Name is Too Short!"),
     position: Yup.string().required("Required"),
+    password: Yup.string()
+      .required("Required")
+      .min(8, "password must have a minuimum of 8 characters"),
   });
 
   return (
@@ -52,33 +58,27 @@ const App: React.FC = () => {
           isSubmitting,
         }) => (
           <Form>
-            <FormikField name='name' label='Name' required={true} />
+            <FormikField name='name' label='Name' required />
             <FormikField
               name='password'
               label='Password'
-              required={true}
+              required
               type='password'
             />
-            <div>
-              <label>Position: </label>
-              <Field
-                name='position'
-                as='select'
-                autoComplete='off'
-                placeholder='Choose Your Position'
-              >
-                <option value=''></option>
-                <option value='front-end'>Front End</option>
-                <option value='back-end'>Back End</option>
-                <option value='dev-ops'>Dev Ops</option>
-                <option value='qa'>QA</option>
-              </Field>
-              <ErrorMessage name='position' />
-            </div>
-            <FormikSelect label='Position' name='position' items={position} />
-            <button disabled={!dirty || !isValid} type='submit'>
+            <FormikSelect
+              label='Position'
+              name='position'
+              items={positionItems}
+              required
+            />
+            <Button
+              disabled={!dirty || !isValid}
+              type='submit'
+              color='primary'
+              variant='contained'
+            >
               Submit
-            </button>
+            </Button>
           </Form>
         )}
       </Formik>

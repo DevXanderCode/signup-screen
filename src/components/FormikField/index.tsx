@@ -13,7 +13,7 @@ interface FormikFieldProps {
 const FormikField: React.FC<FormikFieldProps> = ({
   name,
   label,
-  required,
+  required = false,
   type = "text",
   ...props
 }) => {

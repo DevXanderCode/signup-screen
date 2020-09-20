@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 interface FormValues {
@@ -46,6 +46,7 @@ const App: React.FC = () => {
             <div>
               <label>Name: </label>
               <Field name={"name"} as='input' autoComplete='off' />
+              <ErrorMessage name='name' />
             </div>
             <div>
               <label>Position: </label>
@@ -61,6 +62,7 @@ const App: React.FC = () => {
                 <option value='dev-ops'>Dev Ops</option>
                 <option value='qa'>QA</option>
               </Field>
+              <ErrorMessage name='position' />
             </div>
             <button disabled={!dirty || !isValid} type='submit'>
               Submit
